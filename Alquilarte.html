@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alquilarte</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fabbde;
+        }
+        header {
+            background-color: #ffffff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            background-color: #92f5ed;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: rgb(0, 0, 0);
+            margin: 0 15px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #content {
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #fdff87;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px;
+        }
+        .column {
+            flex: 1;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+        .carousel-container {
+            width: 300px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            cursor: pointer;
+        }
+        .arrow-left {
+            left: 10px;
+        }
+        .arrow-right {
+            right: 10px;
+        }
+        .imglogo {
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            height: 200px;
+        }
+
+        .imglogo img {
+            height: 300px;
+            width: 300px;
+        }
+
+        /* Estilo para las imágenes del carrusel */
+        .carousel-image {
+            max-width: 300px; /* Limita el tamaño de las imágenes del carrusel */
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="imglogo">
+            <img src="logo.jpg" alt="Logo Alquilarte">
+        </div>
+        <p>mensajito :D</p>
+    </header>
+
+    <nav>
+        <a onclick="loadPage('servicios')">Servicios</a>
+        <a onclick="loadPage('productos')">Productos</a>
+        <a onclick="loadPage('contacto')">Contacto</a>
+    </nav>
+
+    <div id="content">
+        <h2>Página principal</h2>
+        <p>Contenido principal.</p>
+    </div>
+
+    <footer>
+        <p>&copy; Alquilarte 2024. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Función que cambia el contenido dinámicamente
+        function loadPage(page) {
+            var content = document.getElementById('content');
+
+            // Cambiar el contenido según la página seleccionada
+            if (page === 'servicios') {
+                content.innerHTML = `
+                    <h2>Nuestros Servicios</h2>
+                    <p>Descripción detallada de los servicios que ofrecemos en el negocio.</p>
+                `;
+            } else if (page === 'productos') {
+                content.innerHTML = `
+                    <h2>Productos</h2>
+                    <div class="container">
+                        <div class="column">
+                            <h2>3 cilindros</h2>
+                            <img src="3 cilindros.jpg" alt="Imagen en Columna 1" style="max-width: 300px; height: 00px;">
+                            <h2>15.00$</h2>
+                            <h2>Mampara</h2>
+                            <div class="carousel-container">
+                                <button class="arrow arrow-left" onclick="previousImage()">&#9664;</button>
+                                <img id="carousel-image" class="carousel-image" src="cilindro sin forro.jpg" alt="Cilindro sin forro">
+                                <button class="arrow arrow-right" onclick="nextImage()">&#9654;</button>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h2>Columna 2</h2>
+                            <img src="https://via.placeholder.com/300" alt="Imagen en Columna 2">
+                        </div>
+                        <div class="column">
+                            <h2>Columna 3</h2>
+                            <img src="https://via.placeholder.com/300" alt="Imagen en Columna 3">
+                        </div>
+                    </div>
+                `;
+            } else if (page === 'contacto') {
+                content.innerHTML = `
+                    <h2>Contacto</h2>
+                    <img scr= "" 
+                    <p>@alquil.artebyanais</p>
+                `;
+            }
+        }
+
+        // Carrusel de imágenes
+        const images = [
+            "cilindro sin forro.jpg", 
+            "forros.jpg", 
+          
+        ];
+        let currentIndex = 0;
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('carousel-image').src = images[currentIndex];
+        }
+
+        function previousImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            document.getElementById('carousel-image').src = images[currentIndex];
+        }
+    </script>
+</body>
+</html>
